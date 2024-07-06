@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Appium Java Client
+    implementation 'io.appium:java-client:8.3.0'
+
+    // Selenium Java
+    implementation 'org.seleniumhq.selenium:selenium-java:4.4.0'
+
+    // Log4j Dependencies for Logging
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
+
+    // TestNG (if you are using TestNG for running tests)
+    implementation 'org.testng:testng:7.5'
+
+}
+
+test {
+    useJUnitPlatform()
+}
