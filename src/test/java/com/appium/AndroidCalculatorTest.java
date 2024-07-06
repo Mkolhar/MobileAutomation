@@ -1,16 +1,14 @@
+package com.appium;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.example.appium.utils.CalculatorUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 public class AndroidCalculatorTest {
     CalculatorUtils calculatorUtils;
