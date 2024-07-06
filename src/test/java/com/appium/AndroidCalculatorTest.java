@@ -2,27 +2,23 @@ package com.appium;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.appium.utils.CalculatorUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
 import java.net.URL;
 
 public class AndroidCalculatorTest {
     CalculatorUtils calculatorUtils;
     AndroidDriver driver;
+    private static final Logger logger = LogManager.getLogger(CalculatorUtils.class);
 
-    public static void main(String[] args) {
-        try {
-            new AndroidCalculatorTest().openCalculator();
-
-        } catch (Exception e) {
-            System.out.println("Woe ---->" +e.getCause());
-            System.out.println("Woe ---->" +e);
-            System.out.println("Woe ---->" +e.getMessage());
-        }
+    @BeforeMethod
+    public void logTestMethodName(Method method) {
+        logger.info("Test Case Name: " + method.getName());
     }
 
     @BeforeClass
@@ -62,33 +58,67 @@ public class AndroidCalculatorTest {
 
 //        driver.quit();
     }
+
     @Test
-    public void testAddition() {
-        calculatorUtils.performOperation(9, "add", 5, "14");
+    public void additionOfNineAndFive() {
+        try {
+            calculatorUtils.performOperation(9, "add", 5, "14");
+        } catch (Exception e) {
+            logger.debug(e.toString());
+            throw new RuntimeException(e);
+
+        }
     }
 
     @Test
-    public void testSubtraction() {
-        calculatorUtils.performOperation(8, "subtract", 3, "5");
+    public void subtractionOfEightAndThree() {
+        try {
+            calculatorUtils.performOperation(8, "subtract", 3, "5");
+        } catch (Exception e) {
+            logger.debug(e.toString());
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
-    public void testMultiplication() {
-        calculatorUtils.performOperation(14, "multiply", 5, "70");
+    public void multiplicationOfFourteenAndFive() {
+        try {
+            calculatorUtils.performOperation(14, "multiply", 5, "70");
+        } catch (Exception e) {
+            logger.debug(e.toString());
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
-    public void testDivision() {
-        calculatorUtils.performOperation(70, "divide", 10, "7");
+    public void divisionOfSeventyAndTen() {
+        try {
+            calculatorUtils.performOperation(70, "divide", 10, "7");
+        } catch (Exception e) {
+            logger.debug(e.toString());
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
-    public void testComplexSeries() {
-        calculatorUtils.performComplexOperation("100+200-100*2/5", "140");
+    public void testCaseWithMultipleOperations() {
+        try {
+            //This Works On the bases of BODMASS rule
+            calculatorUtils.performComplexOperation("100+200-100*2/5", "260");
+        } catch (Exception e) {
+            logger.debug(e.toString());
+            throw new RuntimeException(e);
+        }
+    }
+
+    @AfterMethod
+    public void setLoggerBreak() {
+        // This will provide the proper line brake in log
+        logger.info("********************************************************************************** \n ");
     }
 
     @AfterClass
-    public void tearDown() {
+    public void closeCalculatorApp() {
         if (driver != null) {
             driver.quit();
         }
