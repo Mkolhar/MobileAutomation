@@ -9,6 +9,7 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     // Appium Java Client
     implementation 'io.appium:java-client:8.3.0'

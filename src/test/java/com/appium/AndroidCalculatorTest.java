@@ -26,9 +26,8 @@ public class AndroidCalculatorTest {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        // Use the "appium:" prefix for non-W3C standard capabilities
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 8 Pro");
-        capabilities.setCapability(MobileCapabilityType.UDID, "emulator-5556");
+        capabilities.setCapability(MobileCapabilityType.UDID, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15");
         capabilities.setCapability("appPackage", "com.google.android.calculator");
@@ -41,22 +40,6 @@ public class AndroidCalculatorTest {
         driver = new AndroidDriver(url, capabilities);
 
         calculatorUtils = new CalculatorUtils(driver);
-
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        // Add some basic actions to verify the calculator opens correctly
-//        driver.findElement(By.id("com.google.android.calculator:id/digit_2")).click();
-//        driver.findElement(By.id("com.google.android.calculator:id/op_add")).click();
-//        driver.findElement(By.id("com.google.android.calculator:id/digit_3")).click();
-//        driver.findElement(By.id("com.google.android.calculator:id/eq")).click();
-//        String result = driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText();
-
-//        System.out.println("Calculation result: " + result);
-
-
-//        System.out.println("Calculation result: " );
-
-//        driver.quit();
     }
 
     @Test
